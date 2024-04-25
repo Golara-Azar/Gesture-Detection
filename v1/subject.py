@@ -72,8 +72,8 @@ TEST_REPS = [2, 4]
 
 normalize=True
 
-SAVEDIR = f'./Nature_data/final/subj/'
-DATADIR = "/scratch/ga2148/NYU_project/HD_EMG_Nature/"
+SAVEDIR = f'./Nature_data/subj/'
+DATADIR = "./HD_EMG_Nature/"
 #model parameters
 MODEL = 'BILSTM' #CNN BILSTM LSTM
 print('model: ',MODEL)
