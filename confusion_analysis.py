@@ -90,10 +90,10 @@ normalize=True
 
 
 
-SAVEDIR = f'./with_embedding_no_freeze/results/'
-FIGDIR = f'./with_embedding_no_freeze/figures/'
-MODELDIR = f'./with_embedding_no_freeze/models/'
-DATADIR = "/scratch/ga2148/NYU_project/HD_EMG_Nature/"
+SAVEDIR = f'./results/'
+FIGDIR = f'./figures/'
+MODELDIR = f'./models/'
+DATADIR = "./HD_EMG_Nature/"
 #model parameters
 MODEL = 'BILSTM' #CNN BILSTM LSTM
 print('model: ',MODEL)
@@ -253,11 +253,11 @@ def get_idxs(in_array, to_find):
     targets = ([np.where(in_array == x) for x in to_find])
     return np.squeeze(np.concatenate(targets, axis=1))
     
-# labels=['Siege', 'Initiation', 'Crowd_control', 'Wave_clear', 'Objective_damage']
+
 labels = list(range(1,66))
-# markers = [0, 1, 2, 3, 4, 5]
+
 markers = [0,20,40,60,80,100]
-# str_markers = ["0", "1", "2", "3", "4", "5"]
+
 str_markers = ["0","20%","40%","60%","80%","100%"]
 
 def make_radar_chart(name, stats, attribute_labels=labels,
@@ -291,8 +291,7 @@ oneHot_encoder = OneHotEncoder(sparse=False)
 oneHot_encoder.fit(np.array(MOVES).reshape(-1, 1))    
 cm_matrices = []
 
-# for ges in MOVES:
-#     print(ges,oneHot_encoder.transform(np.array(ges).reshape(1,-1)))
+
             
 
 for item in TEST_SUBS:
@@ -321,7 +320,7 @@ for item in TEST_SUBS:
             Xtr, ytr, tr_subs = Xtr_s, ytr_s, tr_s
             
             # convert labels to one-hot
-            #oneHot_encoder = OneHotEncoder(sparse=False)
+            
             ytr = oneHot_encoder.transform(ytr.reshape(-1, 1))
             
             
