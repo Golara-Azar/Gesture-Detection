@@ -59,7 +59,7 @@ print('# GPUs: ', len(tf.config.list_physical_devices('GPU')))
 SAMPLE_RATE = 2000    # 2048 Hz but for convenience in windowing
 SIGNAL_TYPE = 'transient'
 SIGNAL_LEN = 5
-TRANSIENT = 0.5#float(sys.argv[1])#0.5,0.35,0.2(no windowing)
+TRANSIENT = 0.5
 REP_LEN = int(SAMPLE_RATE*SIGNAL_LEN) if SIGNAL_TYPE == 'complete' else int(SAMPLE_RATE*TRANSIENT)
 WIN_LEN = 400    # sliding window length
 WIN_INC = 20    # sliding window increment
@@ -90,8 +90,8 @@ TEST_REPS = [2, 4]
 
 normalize=True
 
-SAVEDIR = f'./subject_specific/'#+str(TTL_MOVES)+'gestures/'
-DATADIR = "/scratch/ga2148/NYU_project/HD_EMG_Nature/"
+SAVEDIR = f'./subject_specific/'
+DATADIR = "./HD_EMG_Nature/"
 #model parameters
 MODEL = 'BILSTM' #CNN BILSTM LSTM
 print('model: ',MODEL)
