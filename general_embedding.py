@@ -75,31 +75,6 @@ TTL_MOVES = 65#int(sys.argv[1])
 MOVES = list(range(1, TTL_MOVES+1))
 REPS = list(range(1, 6))
 
-"""
-#top 7 subjects
-if TTL_MOVES==65:
-    SUBJECTS = [20, 2, 1, 17, 4, 11, 12]  #updated
-elif TTL_MOVES==45:
-    SUBJECTS = [17, 2, 20, 14, 4, 12, 1]
-elif TTL_MOVES==25:
-    SUBJECTS = [20, 17, 9, 11, 4, 1, 10]
-elif TTL_MOVES==10:
-    SUBJECTS = [11, 16, 20, 12, 1, 17, 2]
-
-#worst 7 subjects
-if TTL_MOVES==65:
-    SUBJECTS = [19, 5, 3, 13, 16, 8, 7] #updated
-elif TTL_MOVES==45:
-    SUBJECTS = [19, 3, 13, 5, 16, 18, 7]
-elif TTL_MOVES==25:
-    SUBJECTS = [3, 19, 5, 13, 8, 7, 18]
-elif TTL_MOVES==10:
-    SUBJECTS = [3, 19, 7, 8, 5, 14, 18]
-"""
-
-
-#SUBJECTS = [19, 5, 3, 13, 16, 8, 7] #worst 7
-#SUBJECTS = [20, 2, 1, 17, 4, 11, 12] #top 7
 RANDOM = [1,11,10,14,6,16,3]
 NUM_SUBS = 5#int(sys.argv[1])
 SUBJECTS = RANDOM[:NUM_SUBS]
@@ -141,13 +116,12 @@ print('retrain reps: ',T_REPS)
 V_REPS = TEST_REPS
 
 normalize=True
-FLEXIBLE=['emb_subj','h2','dense2']#['emb_subj','h2'] 'h2','dense2'
-SESSION = 'sensors_v2'#'with_embedding_no_freeze'
+SESSION = 'sensors_v2'
 
 SAVEDIR = f'./{SESSION}/results/'
 FIGDIR = f'./{SESSION}/figures/'
 MODELDIR = f'./{SESSION}/models/'
-DATADIR = "/scratch/ga2148/NYU_project/HD_EMG_Nature/"
+DATADIR = "./HD_EMG_Nature/"
 #model parameters
 MODEL = 'BILSTM' #CNN BILSTM LSTM
 print('model: ',MODEL)
@@ -163,7 +137,7 @@ FIGURE = os.path.join(FIGDIR, f'init_{SUBJECTS}_{HIDDEN_UNIT}hidden_order{DILATI
 RESULTS = os.path.join(SAVEDIR, f'init_{SUBJECTS}_{HIDDEN_UNIT}hidden_order{DILATION_ORDER}dilated_{MODEL}_{LAYERS}Layers_EMB{EMB_DIM}_NOunitnorm_INDENSE{IN_DENSE}_{len(MOVES)}gestures_results_retrain100epochs_retrain{T_REPS}_transient{TRANSIENT}.csv' )
 PRETRAIN_RESULTS = os.path.join(SAVEDIR, f'pretraining_{SUBJECTS}_{HIDDEN_UNIT}hidden_order{DILATION_ORDER}dilated_{MODEL}_{LAYERS}Layers_EMB{EMB_DIM}_NOunitnorm_INDENSE{IN_DENSE}_{len(MOVES)}gestures_results_retrain100epochs_retrain{T_REPS}_transient{TRANSIENT}.csv' )
 
-#RESULTS = os.path.join(SAVEDIR,'no_calib.csv')
+
 
 TEST_SUBS = list(range(1,21))
 for item in SUBJECTS:
@@ -416,7 +390,6 @@ if MODEL=='BILSTM':
     
     h4 = h2_drop*u
     h4_flat = Flatten(name='h4_flat')(h4) 
-    #h4_flat = Flatten(name='h2_flat')(h2_drop) 
     predictions = Dense(len(MOVES), activation='softmax', name = 'dense2')(h4_flat) 
     
     
@@ -456,8 +429,7 @@ mc = ModelCheckpoint(os.path.join(MODELDIR, BESTMODEL), monitor='val_categorical
 
 
 lrate = LearningRateScheduler(step_decay)
-#LR=1e-3
-#EPOCHS=200
+
 
 if TRAIN==True:
     start_time = time.perf_counter()
