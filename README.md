@@ -4,7 +4,7 @@ Hand gesture recognition (HGR) has gained significant attention due to the incre
 
 **If you find this repository useful to your research, please cite our paper:**
 
-G. A. Azar, Q. Hu, M. Emami, A. Fletcher, S. Rangan and S. F. Atashzar, "A Deep Learning Sequential Decoder for Transient High-Density Electromyography in Hand Gesture Recognition Using Subject-Embedded Transfer Learning," in IEEE Sensors Journal, doi: 10.1109/JSEN.2024.3377247. keywords: {Data models;Decoding;Long short term memory;Transient analysis;Transfer learning;Training;Muscles;High-density EMG;Gesture Recognition;Human-Computer Interface;Transfer Learning},
+[G. A. Azar, Q. Hu, M. Emami, A. Fletcher, S. Rangan and S. F. Atashzar, "A Deep Learning Sequential Decoder for Transient High-Density Electromyography in Hand Gesture Recognition Using Subject-Embedded Transfer Learning," in IEEE Sensors Journal, doi: 10.1109/JSEN.2024.3377247. keywords: {Data models;Decoding;Long short term memory;Transient analysis;Transfer learning;Training;Muscles;High-density EMG;Gesture Recognition;Human-Computer Interface;Transfer Learning},](https://ieeexplore.ieee.org/document/10477310)
 
 
 @ARTICLE{azar2024,
